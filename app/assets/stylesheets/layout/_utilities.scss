@@ -1,0 +1,172 @@
+/* -------------------------------------
+ * Utilities classes
+ * These are examples of utilities classes
+ * Feel free to change them and create your own
+ * ------------------------------------- */
+
+// Modal
+
+.modal-body {
+    min-height: 200px;
+}
+
+// Wrappers
+.wrapper-lightgrey {
+  background-color: #EEEEEE;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.page-wrapper-white {
+  background-color: white;
+  min-height: 80vh;
+}
+
+.wrapper-white {
+  background-color: white;
+  // padding-top: 5vh;
+  // padding-bottom: 5vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.wrapper-white h2 {
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 30px;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  color: #333;
+}
+
+.wrapper-white-lg {
+  height: 300px;
+}
+
+.wrapper-yellow {
+  background-color: $fresh-yellow;
+  color: white;
+  padding-top: 2.5vh;
+  padding-bottom: 2.5vh;
+  font-size: calc(100% + 0.9vw);
+  font-weight: lighter;
+  margin-bottom: 2.5vh;
+}
+
+.wrapper-footer {
+  background-color: $fresh-yellow;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.wrapper-yellow-no-margin {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 15px;
+  padding-top: 3.5vh;
+  padding-bottom: 3.5vh;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.wrapper-transp-grey {
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+}
+
+.margin-top {
+  height: 70px;
+}
+
+// Paddings
+.padded {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.padded-small {
+  padding-top: 3em;
+  padding-bottom: 5em;
+}
+
+// Backgrounds
+.bg-black {
+  background: #4a4a4a;
+}
+.bg-grey {
+  background: #aeaeae;
+}
+.bg-blue {
+  background: #00a3e1;
+}
+.bg-dark-blue {
+  background: #3b5998;
+}
+
+.flex-wrapper-sp-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  outline : none;
+}
+
+a:active,
+a:focus,
+a:visited {
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+// bootstrap overrides
+.alert-info {
+  border-color: $green;
+  background: $green;
+  color: white;
+}
+
+.close-md {
+  float: right;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+}
+
+.close-lg {
+  float: right;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+}
+
+.centered {
+  position: fixed; /* or absolute */
+  top: 35%;
+  left: 50%;
+}
+
+// a:focus {
+//   outline: none;
+//   border: none;
+//   text-decoration: none;
+//   color: #616668;
+// }
+
+// a:visited {
+//   outline: none;
+//   border: none;
+//   text-decoration: none;
+//   color: #616668;
+// }

@@ -1,0 +1,39 @@
+// Graphical variables
+@import "config/variables";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "social-share-button";
+
+// Your CSS
+@import "layout/index";
+@import "components/index";
+@import "pages/index";
+@import "vendor/index";
+
+$size: 40px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}
+
+@media (max-width:623px){
+  .social-share-button {
+  .ssb-icon {
+    background-size: 50px 50px;
+    height: 50px;
+    width: 50px;
+  }
+}
+  .social-share-button a {
+    margin-right: 10px;
+  }
+}

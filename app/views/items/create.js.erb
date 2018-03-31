@@ -1,0 +1,22 @@
+// Here you will write *javascript* that would be executed by the browser
+<% if @item.errors.any? %>
+  // Render new review form with errors
+  $('#new_item').html("<%= j render 'items/form', business_place: @business_place, item: @item %>");
+<% else %>
+
+  // Add the html that will need to display for the new item and hide it
+  var new_item = $("<%= j render '/business_places/item_show', item: @item %>").hide();
+  $('.js-items-list').append(new_item);
+
+
+  // Set animation to happen after modal hide
+  $('#add-dish-modal').on('hidden.bs.modal', function (e) {
+    // after modal hide animation execute this
+    // Show the new item with slideDown
+    new_item.slideDown("slow");
+  })
+
+  // Hide modal
+  $('#add-dish-modal').modal('hide');
+
+<% end %>

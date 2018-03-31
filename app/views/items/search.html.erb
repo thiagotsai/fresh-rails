@@ -1,0 +1,73 @@
+<div class="margin-top"></div>
+<user lat="<%= session[:lat] %>", lng="<%= session[:lat] %>", accuracy="<%= session[:accuracy] %>"></user>
+<!-- add filters: by price, by distance, by cuisines, by location -->
+
+<div class="wrapper-yellow text-center">
+<% unless @items.empty? %>
+We found <%= pluralize @items.count, "fresh dish" %> nearby
+<% else %>
+<i class="fa fa-meh-o" aria-hidden="true"></i> Opps! No matches for your search
+<% end %>
+</div>
+
+  <!-- combo_box -->
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <form action="search" class="form-inline" method="get">
+      <input type="text" name="query" value="<%= params[:query] %>" class="form-control" placeholder="What do you want to eat today?" size="30">
+      <select name="location" class="form-control selectwidthauto">
+          <% BusinessPlace.select(:city).distinct.order(:city).each do |e| %>
+            <option value="<%= e.city.downcase %>" <%= "selected" if e.city.downcase == @city %>><%= e.city.capitalize %></option>
+          <% end %>
+      </select>
+      <select name="cuisine_id" class="form-control selectwidthauto">
+          <option value="0">All Cuisines</option>
+          <% Cuisine.all.order(:name).each do |cuisine| %>
+            <option value="<%= cuisine.id %>" <%= "selected" if @cuisine_id == cuisine.id %>><%= cuisine.name.capitalize %></option>
+          <% end %>
+      </select>
+     <div class="sort-by-label">&nbsp; Sort by: &nbsp;</div>
+      <select name="sort" class="form-control">
+        <% if not session[:lat].blank? and not session[:lng].blank? %>
+          <option value="0" <%= "selected" if @sort.blank? or @sort == 0 %>>Distance</option>
+        <% end %>
+        <option value="1" <%= "selected" if @sort == 1 %>>Name</option>
+        <option value="2" <%= "selected" if @sort == 2 %>>Price Low to High</option>
+        <option value="3" <%= "selected" if @sort == 3 %>>Price High to Low</option>
+      </select>
+        <input type="submit" value="Go" id="search-go" class="btn-medium btn-medium-sm btn-medium-yellow">
+      </form>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="container">
+  <% unless @items.empty? %>
+    <div class="search-container">
+    <% @items.in_groups_of(3) do |item1, item2, item3| %>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= render 'shared/listcard', item: item1 %>
+        </div>
+        <% if item2 %>
+        <div class="col-sm-4">
+          <%= render 'shared/listcard', item: item2 %>
+        </div>
+        <% end %>
+        <% if item3 %>
+        <div class="col-sm-4">
+          <%= render 'shared/listcard', item: item3 %>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  <% else %>
+    <div class="margin-top"></div>
+  <% end %>
+
+</div>
+
+</div>

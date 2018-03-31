@@ -1,0 +1,83 @@
+.footer {
+  background-color: $fresh-yellow;
+  padding: 0;
+  color: white;
+}
+.footer hr {
+  margin: 0;
+  width: auto;
+  margin: 0 25vw;
+}
+
+.footer a {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  transition: color 0.5s ease;
+  text-decoration: none;
+  padding: 0px 8px;
+}
+.footer a:hover{
+  color: #EF6C00;
+}
+.footer p {
+  margin: 8px 0;
+  font-weight: lighter;
+  font-size: 15px;
+  text-align: center;
+  padding: 0px;
+}
+
+.footer-row {
+  padding: 0px;
+  margin: 0px;
+}
+.footer-link {
+  text-align: center;
+  margin: 0;
+  font-size: 15px;
+}
+.footer-link a {
+  font-size: 15px;
+}
+
+#footer-about {
+  // text-align: right;
+  // font-size: 20px;
+  // font-weight: lighter;
+  padding-right: 2vw;
+  text-align: right;
+  font-size: 15px;
+  font-weight: lighter;
+  color: white;
+}
+
+.no-padding {
+  padding: 0;
+}
+.no-margin {
+  margin: 0;
+}
+
+#about-link {
+  padding: 0;
+}
+
+//To make the footer stick to the bottom
+// .content {
+//   min-height: calc(100vh - 50px);
+// }
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}

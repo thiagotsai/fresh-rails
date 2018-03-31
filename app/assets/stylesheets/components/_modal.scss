@@ -1,0 +1,173 @@
+// Corrections in bootstrap for stacked modals
+// not to add strange padding to the scrollbar
+.modal-open {
+  overflow-y: scroll;
+  padding-right: 0 !important;
+}
+
+.modal {
+  margin-left: 17px;
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+// Modal header customize to override Bootstrap
+.modal-header {
+  padding:9px 15px;
+  border-bottom:1px solid #eee;
+  background-color: #F6F7F9;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+ }
+
+.modal-body {
+  position: relative;
+  padding: 15px 15px;
+}
+
+.modal-body h4 {
+  margin-top: 0px;
+  margin-bottom: 3px;
+}
+
+.modal-footer {
+  text-align: left;
+  //border-top:1px solid #eee;
+  border-top: 0px;
+  padding: 9px 15px;
+  // background-color: #F6F7F9;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-bottomright: 6px;
+}
+
+// Resolve problem of Google Address Autocomplete form inside modal bootstrap
+.pac-container {
+  background-color: #fff;
+  z-index: 20;
+  position: fixed;
+  display: inline-block;
+  float: left;
+}
+
+.modal {
+  z-index: 20;
+}
+
+.modal-backdrop {
+  z-index: 10;
+}
+
+// Modal form styles
+
+.form-row-inline {
+  vertical-align: center;
+}
+
+.label-inline {
+    /* Other styling.. */
+    //padding-top: 8px;
+    text-align: left;
+    clear: both;
+    float:left;
+    margin-left:15px;
+    width: 130px;
+    color: #777;
+    font-size: calc(90% + 0.1vw);
+
+}
+
+.form-row-inline .form-control {
+    display: block;
+    //width: 71%;
+    height: 36px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+// Until 1023px of Window Width
+@media (max-width:623px){
+  .form-row-inline .form-control {
+    width: 62%;
+  }
+
+  .label-inline {
+    width: 100px;
+    margin-left: 5px;
+  }
+}
+
+// After 1024px of Window Width
+@media (min-width:624px){
+  .form-row-inline .form-control {
+    width: 71%;
+  }
+}
+
+
+// Makes the "No file chosen" disappear
+input[type=file]{
+        color: transparent;
+}
+
+
+
+// input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+//   border:1px solid red;
+//    text-decoration:none;
+//    font-family:helvetica;
+//    color:red;
+//    background:url(img.png) repeat-x;
+// }
+
+
+// Makes style to the input file button in all forms
+input[type="file" i]::-webkit-file-upload-button {
+   border: 1px solid #888;
+   border-radius: 25px;
+   padding-right: 17px;
+   padding-left: 17px;
+   text-decoration:none;
+   outline:none;
+   color: #999;
+   height: 35px;
+   /* For any browser that can't create a gradient  */
+    background-color: transparent;
+    // /*//mozilla*/
+    // background: -moz-linear-gradient(top, #FFF, #CCC);
+    // /* Chrome/Safari     */
+    // background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CCC));
+    // /*IE 6/7 */ filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FFF',EndColorStr='#CCC');
+    // /*IE 8 */
+    // -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF, endColorstr=#CCC)";
+}
+
+// Makes
+.input-file-feedback {
+  margin: 10px 0px;
+  color: #777;
+}
+
+

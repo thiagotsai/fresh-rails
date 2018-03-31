@@ -1,0 +1,90 @@
+.footer {
+  background-color: $fresh-yellow;
+  padding: 0;
+  color: white;
+  //height: 10vh;
+  //height: 80px;
+}
+// .footer hr {
+//   width: auto;
+//   margin: 1vh 30vh 0vh 30vh;
+// }
+
+.footer a {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  transition: color 0.5s ease;
+  text-decoration: none;
+  padding: 0px 10px;
+}
+.footer a:hover{
+  color: #EF6C00;
+}
+.footer p {
+  margin: 8px 0;
+  font-weight: lighter;
+  font-size: 15px;
+  text-align: center;
+  padding: 0px;
+}
+
+.footer-row {
+  padding: 0px;
+  margin: 0px;
+}
+.footer-link {
+  text-align: center;
+  margin: 0;
+  font-size: 15px;
+}
+
+.footer-link a {
+  font-size: 15px;
+}
+
+.footer-icon {
+  margin-top: 0;
+  text-align: center;
+  padding: 0;
+
+}
+.footer-icons {
+  position: absolute;
+  // bottom: 2vh;
+  // left: 3vh;
+}
+
+// .footer-links-position {
+//   position: absolute;
+//   bottom: 2vh;
+// }
+
+.footer-about {
+  text-align: center;
+  font-size: 15px;
+  font-weight: lighter;
+  color: white;
+  // position: absolute;
+  // bottom: 2vh;
+  // right: 3vh;
+}
+
+//To make the footer stick to the bottom
+// .content {
+//   min-height: calc(100vh - 50px);
+// }
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}

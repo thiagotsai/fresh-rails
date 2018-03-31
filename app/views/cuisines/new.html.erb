@@ -1,0 +1,13 @@
+<div class="margin-top"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <h2>New Cuisine</h2>
+      <%= simple_form_for @cuisine do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

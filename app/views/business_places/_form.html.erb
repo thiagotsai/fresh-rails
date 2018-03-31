@@ -1,0 +1,90 @@
+<%= simple_form_for @business_place do |f| %>
+
+<div class="form-row-inline">
+  <span class="label-inline">Name</span>
+  <div>
+    <%= f.input :name, label: false, placeholder: "Enter the name" %>
+
+  </div>
+</div>
+
+<div class="form-row-inline">
+  <span class="label-inline">Description</span>
+  <div>
+    <%= f.input :description, label: false, placeholder: "Enter a punch line description" %>
+  </div>
+</div>
+
+<div class="form-row-inline">
+  <span class="label-inline">Cuisine</span>
+  <div>
+    <%= f.input :cuisine_id, label: false, collection: @cuisines, prompt: "Select the main cuisine" %>
+    <%# f.input :cuisine_id, collection: @cuisines, selected: @business_place.cuisine.id, prompt: "Select the main cuisine", label: "Main cuisine" %>
+    <%#= f.association :cuisines, as: :check_boxes, label: "What other cuisines does it have?" %>
+  </div>
+</div>
+
+<div class="form-row-inline">
+  <span class="label-inline">Phone</span>
+  <div>
+    <%= f.input :phone_number, label: false, placeholder: "Enter the Phone Number" %>
+  </div>
+</div>
+
+<div class="form-row-inline">
+  <span class="label-inline">Address</span>
+  <div>
+    <%= f.input :address, label: false %>
+    <%#= f.input :average_cost, placeholder: "Enter the average cost e.g. 30 euros for 2 people", label: "Cost" %>
+    <%#= f.input :opening_time, placeholder: "Enter working time e.g. 12pm - 9pm", label: "Opening Time" %>
+  </div>
+</div>
+
+<div class="form-row-inline">
+  <span class="label-inline">Zip code</span>
+  <div>
+    <%= f.input :zip_code, label: false %>
+  </div>
+</div>
+
+<div class="form-row-inline">
+  <span class="label-inline">City</span>
+  <div>
+    <%= f.input :city, label: false %>
+  </div>
+</div>
+
+<div class="form-row-inline">
+  <span class="label-inline">Country</span>
+  <div>
+    <%= f.input :country, label: false, priority: [ 'PT' ] %>
+  </div>
+</div>
+
+
+  <span class="label-inline">Cover</span>
+  <div>
+    <%= f.input_field :cover_photo, label: false %>
+    <div class="input-file-feedback">
+      <span class="label-inline">&nbsp;</span>
+      <span id="businessPlaceUploadFile"></span>
+    </div>
+    <%= f.input :cover_photo_cache, as: :hidden %>
+  </div>
+
+
+<%= f.button :submit, class: "btn btn-primary btn-block" %>
+<% end %>
+
+<%= content_for(:after_js) do %>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyANIX5OkPPRTJZkKRUF80Nso8xQvwEY2mE"></script>
+
+
+<script>
+  // To change the display of the button after selection
+  $("#business_place_cover_photo").change(function () {
+      $("#businessPlaceUploadFile").text("1 photo selected");
+  });
+</script>
+
+<% end %>

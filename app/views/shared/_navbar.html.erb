@@ -1,0 +1,198 @@
+<% unless user_signed_in? %>
+  <%= render "shared/modal_signup" %>
+  <%= render "shared/modal_login" %>
+<% end %>
+
+<div class="navbar-wagon navbar-wagon-fixed">
+<!-- Logo -->
+<%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= image_tag "logo.png", class: "desktop" %>
+  <%= image_tag "logo_f.png", class: "mobile" %>
+<% end %>
+
+
+  <!-- Search form -->
+<!--     <form action="/items/search" class="navbar-wagon-search">
+      <input type="hidden" name="location" value="<%= "Lisboa" if @city.blank? %> <%= @city unless @city.blank? %>">
+      <input type="text" name="query" class="navbar-wagon-search-input" placeholder="What do you want to eat today?">
+      <button type="submit" class="navbar-wagon-search-btn">
+        <i class="fa fa-search"></i>
+      </button>
+    </form> -->
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <% if user_signed_in? && current_user.business_places.include?(@business_place) && current_page?(controller: 'business_places', action: 'show')%>
+      <%#= link_to "Manage #{@business_place.name}", "#", class:"navbar-wagon-link", data: { toggle: "modal", target: "#manage-bp-modal"} %>
+      <div class="dropdown">
+      <%= link_to "Manage #{@business_place.name}", "#", class: "navbar-wagon-link dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li>
+            <%= link_to "#", data: { dismiss: "modal", toggle: "modal", target: "#edit-bp"} do %>
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>&nbsp; Edit Basic Info</span>
+            <% end %>
+            <hr class="no-padding">
+            <%= link_to "#", data: { dismiss: "modal", toggle: "modal", target: "#manage-dishes-modal"} do %>
+            <i class="fa fa-spoon" aria-hidden="true"></i>
+            <span>&nbsp; Manage Dishes</span>
+            <% end %>
+        </li>
+      </ul>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+
+
+    <!-- Different navigation if login or not -->
+    <%# if user_signed_in? %>
+
+    <!-- Dishes Portifolio Link -->
+    <%#= link_to "Manage Dishes", "#", class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#manage-dishes-modal"} %>
+
+    <!-- Manage Colaborators -->
+    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Add Members</a> -->
+
+    <!-- Add your Business Link for Already Owners -->
+    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Add new Business</a> -->
+
+      <% if user_signed_in? && current_user.business_places.include?(@business_place) && current_page?(controller: 'business_places', action: 'show')%>
+        <%= link_to "Add your Business", new_business_place_path , class: "navbar-wagon-link" %>
+      <% else %>
+        <div class="navbar-wagon-item">
+        <%= link_to "Add your Business", new_business_place_path , class: "btn-medium btn-medium-sm" %>
+        </div>
+      <% end %>
+<!--     <div class="navbar-wagon-item">
+      <div class="dropdown">
+      <a href="#" class="navbar-wagon-item navbar-wagon-link dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">Test Dropdown</a>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </div>
+    </div> -->
+
+    <!-- Notification -->
+    <%# link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+    <!-- <div class="badge-container">
+      <i class="fa fa-envelope-o"></i>
+      <div class="badge badge-blue">3</div>
+    </div> -->
+    <%# end %>
+
+    <!-- Profile picture and dropdown -->
+<!--     <div class="nav-bar-wagon-item">
+      <%# current_user.first_name %>
+    </div> -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <%# raise %>
+        <% if user_signed_in? && current_user.photo.url %>
+          <%= image_tag current_user.photo.url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% elsif user_signed_in? && current_user.facebook_picture_url %>
+          <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% else %>
+          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% end %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to edit_user_registration_path(current_user) do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
+          <hr class="no-padding">
+          <% unless current_user.business_places.empty? %>
+            <% current_user.business_places.each do |bp| %>
+              <li>
+                <%= link_to business_place_path(bp), class: "navbar-wagon-item navbar-wagon-link" do %>
+              <i class="fa fa-cutlery" aria-hidden="true"></i> <%= bp.name %>
+              <% end %>
+              </li>
+            <% end %>
+          <!-- <li>
+          <%#= link_to "/business_places/#{current_user.business_places.last.id}", class: "navbar-wagon-item navbar-wagon-link" do %>
+          <i class="fa fa-cog"></i> Manage Business Places
+          <%# end %>
+          </li> -->
+          <% end %>
+          <hr class="no-padding">
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <% else %>
+
+    <!-- Signup text link -->
+    <%# link_to t(".sign_up", default: "Sign up"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#loginModal" } %>
+
+    <%= link_to "Add your Business", "#" , class: "btn-medium btn-medium-sm", data: { toggle: "modal", target: "#loginModal" } %>
+
+    <%= link_to "Sign up", "#" , class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#signUpModal" } %>
+
+    <%= link_to "Login", "#" , class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#loginModal" } %>
+
+    <!-- Login text link -->
+    <%# link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <% end %>
+
+    <!-- Button (call-to-action) -->
+    <!--     <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %> -->
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars fa-2x dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to edit_user_registration_path(current_user) do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <hr class="no-padding">
+        <li>
+          <% if user_signed_in? && current_user.business_places.include?(@business_place) && current_page?(controller: 'business_places', action: 'show')%>
+                <li><%= link_to "Manage #{@business_place.name}", "#", data: { toggle: "modal", target: "#manage-bp-modal"} %></li>
+                <% end %>
+        </li>
+        <hr class="no-padding">
+        <li>
+          <%= link_to new_business_place_path , class: "navbar-wagon-item navbar-wagon-link" do %>
+          <i class="fa fa-plus"></i> Add new Business
+          <% end %>
+        </li>
+        <hr class="no-padding">
+        <% unless current_user.business_places.empty? %>
+          <% current_user.business_places.each do |bp| %>
+              <li>
+                <%= link_to business_place_path(bp), class: "navbar-wagon-item navbar-wagon-link" do %>
+              <i class="fa fa-cutlery" aria-hidden="true"></i> <%= bp.name %>
+                <% end %>
+              </li>
+          <% end %>
+        <% end %>
+        <hr class="no-padding">
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
+      <% else %>
+        <li><%= link_to "Add your Business", "#" , class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#loginModal" } %></li>
+        <li><%= link_to "Sign up", "#" , class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#signUpModal" } %></li>
+        <li><%= link_to "Login", "#" , class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#loginModal" } %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<!-- Your banner code -->
+<div class="banner" style="background-image: url(<%= image_url "food_home_01.jpg" %>);" id="home-banner">
+  <div class="banner-content">
+    <div class= "logo"><%= image_tag "logo_white.png" %></div>
+    <p>Let's eat fresh food today!</p>
+    <form action="items/search" class="form-inline" method="get">
+    <input type="hidden" name="location" value="<%= @city.blank? ? "Lisboa" : @city %>">
+    <input type="hidden" name="lat" value="<%= session[:lat] %>">
+    <input type="hidden" name="lng" value="<%= session[:lng] %>">
+      <!-- combo_box -->
+      <!-- <select name="location" class="form-control input-lg">
+        <%# BusinessPlace.select(:city).distinct.each do |e| %>
+          <option value="<%# e.city.downcase %>" <%# "selected" if e.city.downcase == "lisboa" %>><%# e.city.capitalize %></option>
+        <%# end %>
+      </select> -->
+      <!-- <input name="query" type="text" class="form-control input-lg" placeholder="food type"> -->
+      <input type="submit" value="Find it nearby" class="btn-medium btn-medium-home btn-lg" id="btn-home">
+    </form>
+  </div>
+</div>
+
+<!-- Your cards code -->
+<!-- <div class="padded">
+  <div class="container">
+    <h2 class="text-center">Your next meal</h2>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+
+        <div class="card" style="background-image: url('https://static.pexels.com/photos/7765/food.jpg');">
+          <div class="card-category">Italian</div>
+          <div class="card-description">
+            <h2>La Bottega</h2>
+            <p>Pasta with cherry tomatoes</p>
+          </div>
+          <a class="card-link" href="#" ></a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+
+        <div class="card" style="background-image: url('https://static.pexels.com/photos/2436/bread-food-healthy-breakfast.jpg');">
+          <div class="card-category">Bread</div>
+          <div class="card-description">
+            <h2>Just Baked Bakery</h2>
+            <p>Italian bread</p>
+          </div>
+          <a class="card-link" href="#" ></a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+
+        <div class="card" style="background-image: url('https://static.pexels.com/photos/128388/pexels-photo-128388.jpeg');">
+          <div class="card-category">Contemporary</div>
+          <div class="card-description">
+            <h2>Salad's</h2>
+            <p>Spring salad with potatoes</p>
+          </div>
+          <a class="card-link" href="#" ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Your features code -->
+<!-- <div class="wrapper-white"></div> -->
+<!-- <div class="text-center padded features">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <img src="images/globe.png" alt="">
+        <h2>Why fresh</h2>
+        <p>Discover the gastronomy near you.</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <img src="images/beer.png" alt="">
+        <h2>Meet foodies</h2>
+        <p>People who loves gastronomy as much as you.</p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <img src="images/heart.png" alt="">
+        <h2>Share and love</h2>
+        <p>Join a community you will love.</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- </div>
+</div> -->
+
+<%= content_for(:after_js) do %>
+  <%= render partial: 'shared/get_location.js.erb' %>
+<% end %>
+
+

@@ -1,0 +1,55 @@
+<%= simple_form_for [@business_place, @dish], remote: true do |f| %>
+<div class="form-row-inline">
+  <span class="label-inline">Name</span>
+  <div>
+  <%= f.input :name, label: false, placeholder: "Dish's name" %>
+  </div>
+</div>
+<div class="form-row-inline">
+  <span class="label-inline">Description</span>
+  <div>
+  <%= f.input :description, label: false, placeholder: "Description" %>
+  </div>
+</div>
+<div class="form-row-inline">
+  <span class="label-inline">Price</span>
+  <div>
+  <%= f.input :price, label: false, placeholder: "Price" %>
+  </div>
+</div>
+<div class="form-row-inline">
+  <span class="label-inline">Photo</span>
+  <div>
+  <%= f.input :photo, label: false %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <div class="input-file-feedback">
+      <span class="label-inline">&nbsp;</span>
+      <span id="dishUploadFile"></span>
+  </div>
+  <!-- Placeholder space for the layout not to break -->
+  <span id="space-holder">&nbsp;</span>
+  </div>
+</div>
+  <hr style="margin-top: 15px; margin-bottom: 15px;">
+  <div style="display: flex; justify-content: space-between;">
+    <div>
+      <%= link_to "Delete", dish_path(@dish), class: "btn btn-medium", method: :delete, remote: true %>
+    </div>
+    <div>
+      <button type="button" class="btn btn-medium" data-dismiss="modal" aria-label="Close">Cancel</button>
+      <%= f.button :submit, class: "btn btn-medium btn-medium-yellow", value: "Save", id: "dish-edit-save" %>
+    </div>
+  </div>
+<% end %>
+
+
+<%= content_for(:after_js) do %>
+  <script>
+    // To change the display of the button after selection
+    $("#dish_photo").change(function () {
+        // Fix layout bug
+        $("#space-holder").hide();
+        $("#dishUploadFile").text("1 photo selected");
+    });
+  </script>
+<% end %>

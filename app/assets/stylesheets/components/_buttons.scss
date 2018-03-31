@@ -1,0 +1,167 @@
+.btn-signup-yellow {
+    color: white;
+    background-color: $fresh-yellow;
+    border: none;
+    margin-bottom: 18px;
+}
+
+.btn-signup-yellow:hover {
+  background-color: darken($fresh-yellow, 8%);
+  color: white;
+}
+
+.btn-facebook-fresh:hover {
+  background-color: darken(#3B5998, 8%);
+  color: white;
+  border-color: none;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+}
+
+@media (max-width:623px){
+  #search-go {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 3px;
+    margin-top: 15px;
+  }
+}
+
+
+.btn-badge,
+.bbtn-badge:active,
+.btn-badge:focus,
+.btn-badge:visited {
+  color: white;
+  background-color: $brand-primary;
+  opacity: 1;
+  border: 1px solid $brand-primary;
+  outline: 0;
+  font-size: 20px;
+  padding: 6px;
+}
+
+.btn-badge:hover {
+  background-color: darken($brand-primary, 8%);
+}
+
+.btn-medium,
+.btn-medium:active,
+.btn-medium:focus,
+.btn-medium:visited {
+  color: #888;
+  border: 1px solid #888;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-weight: normal;
+  opacity: 0.8;
+  background-color: transparent;
+}
+
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+  border: 1px solid $brand-primary;
+  background-color: $brand-primary;
+}
+
+  .btn-medium-sm {
+    font-size: 15px;
+  }
+
+  // White
+  .btn-medium-white,
+  .btn-medium-white:active,
+  .btn-medium-white:focus,
+  .btn-medium-white:visited {
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+  }
+
+  .btn-medium-white:hover {
+    background: rgba(255,255,255,0.3);
+    border: 1px solid white;
+  }
+
+  // Yellow
+  .btn-medium-yellow,
+  .btn-medium-yellow:active,
+  .btn-medium-yellow:focus,
+  .btn-medium-yellow:visited {
+    color: white;
+    background-color: $brand-primary;
+    opacity: 1;
+    border: 1px solid $brand-primary;
+    outline: 0;
+  }
+
+  .btn-medium-yellow:hover {
+    background-color: darken($brand-primary, 8%);
+  }
+
+  // Green
+  .btn-medium-green,
+  .btn-medium-green:active,
+  .btn-medium-green:focus,
+  .btn-medium-green:visited {
+    color: $fresh-green;
+    border: 1px solid $fresh-green;
+    background-color: transparent;
+  }
+
+  .btn-medium-green:hover {
+    border: 1px solid $fresh-green;
+    background-color: $fresh-green;
+    color: white;
+  }
+
+  // Home button
+  .btn-medium-home,
+  .btn-medium-home:active,
+  .btn-medium-home:focus,
+  .btn-medium-home:visited {
+    color: white;
+    background-color: $brand-primary;
+    opacity: 1;
+    border: 1px solid white;
+    outline: 0;
+  }
+
+  .btn-medium-home:hover {
+    background-color: darken($brand-primary, 8%)
+  }
+
+#btn-home {
+  font-weight: normal;
+  padding: 6px 36px;
+}
+
+
+#cover-button {
+  position: absolute;
+  left: 4vw;
+  bottom: 26vh;
+}
+
+
+// Get me there button from show to fix on top
+#btn-get-me-there.affix {
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  z-index:10;
+  // transition: all .6s ease-in-out;
+  // -webkit-transition: all .6s ease-in-out;
+}
+
+#divider.affix {
+  margin-top: 70px;
+}
+

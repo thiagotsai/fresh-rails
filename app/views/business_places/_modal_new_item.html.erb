@@ -1,0 +1,66 @@
+<!-- New Item Modal -->
+  <div class="modal fade" id="add-dish-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <% unless @dishes.empty? %>
+        <div class="modal-header">
+          <button type="button" class="close close-md" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add Dish</h4>
+        </div>
+        <% end %>
+        <%= form_tag "/items/copy", method: :post, id: "js-copy-form", remote: true %>
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <%= hidden_field_tag :dish_id %>
+        </form>
+        <div class="modal-body">
+        <% unless @dishes.empty? %>
+            <h4 style="margin-top: 3px; margin-bottom: 15px;">Select a Previous Dish</h4>
+            <div class="row">
+              <div class="col-lg-12 col-md-10 ">
+                  <div class="cover-container">
+                      <!-- START PANEL -->
+                      <% @dishes.each do |d| %>
+                        <%= link_to "#", class: "js-dish-copy-link", data: { id: d.id } do %>
+                          <div class="cover-item" style="background-image: url('<%= d.photo.url %>')"></div>
+                        <% end %>
+                      <% end %>
+                      <!-- END PANEL -->
+                  </div>
+              </div>
+            </div>
+
+            <div style="width: 100%; height: 12px; border-bottom: 1px solid #ddd; text-align: center;">
+              <span style="background-color: white; padding: 0 10px;">
+                or <!--Padding is optional-->
+              </span>
+            </div>
+            <% end %>
+            <div class="js-new-dish-form">
+            <h4 style="margin: 15px 0px;">Create Today's Dish</h4>
+            <%= render 'items/form' %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="spinner centered">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>
+
+<%= content_for(:after_js) do %>
+
+<script>
+  // Action for js-dish-copy-link to change hidden field and post the form
+  $('.js-dish-copy-link').on('click', function(e) {
+      e.preventDefault();
+
+      $('#dish_id').val($(this).data("id"));
+      $('#js-copy-form').submit();
+  });
+
+</script>
+<% end %>
