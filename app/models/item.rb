@@ -16,5 +16,4 @@ class Item < ApplicationRecord
   validates :price, presence: true
 
   attr_accessor :distance, :walking_time
-
 end

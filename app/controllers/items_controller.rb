@@ -126,15 +126,14 @@ class ItemsController < ApplicationController
                      dish: dish, user: current_user)
 
     # To save the remote url of the photo you need to do this
-    @item.remote_photo_url = dish.photo_url
+    @item.photo.retrieve_from_store!(dish.photo.identifier)
     @item.start_datetime = Date.today
     @item.end_datetime = Date.today + 1
 
-    if @item.save
+    if @item.save!
       # Variable to use in view for the ajax js
       # to send the item_show with close button
       @close_button = true
-
       respond_to do |format|
         format.html { redirect_to business_place_path(@business_place) }
         format.js  { render :create }
