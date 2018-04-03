@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :business_place_users
   has_many :business_places, through: :business_place_users
   mount_uploader :photo, PhotoUploader

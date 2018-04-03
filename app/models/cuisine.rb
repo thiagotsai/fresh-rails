@@ -1,4 +1,4 @@
-class Cuisine < ActiveRecord::Base
+class Cuisine < ApplicationRecord
   has_many :business_cuisines
   has_and_belongs_to_many :business_places, through: :business_cuisines
   # has_many :business_places, through: :business_cuisine

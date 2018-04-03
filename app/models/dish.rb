@@ -1,4 +1,4 @@
-class Dish < ActiveRecord::Base
+class Dish < ApplicationRecord
   belongs_to :business_place
   has_many :items
 

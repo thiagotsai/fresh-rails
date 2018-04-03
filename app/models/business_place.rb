@@ -1,4 +1,4 @@
-class BusinessPlace < ActiveRecord::Base
+class BusinessPlace < ApplicationRecord
   has_many :business_cuisines, dependent: :destroy
   belongs_to :cuisine
   has_many :cuisines, through: :business_cuisines

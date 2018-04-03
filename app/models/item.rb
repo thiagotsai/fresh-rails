@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class Item < ApplicationRecord
   belongs_to :dish
   belongs_to :business_place
   belongs_to :user

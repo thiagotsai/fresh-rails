@@ -1,4 +1,4 @@
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
 end

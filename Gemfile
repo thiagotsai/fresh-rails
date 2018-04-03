@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.3.3'
 
-gem 'rails', '4.2.6'
+gem 'rails', '>= 5.0.0.rc2', '< 5.2'
 gem 'puma'
-gem 'pg'
+gem 'pg', '0.20'
 gem 'figaro'
 # gem 'jbuilder', '~> 2.0'
 gem 'redis'

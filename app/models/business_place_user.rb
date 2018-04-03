@@ -1,4 +1,4 @@
-class BusinessPlaceUser < ActiveRecord::Base
+class BusinessPlaceUser < ApplicationRecord
   belongs_to :business_place
   belongs_to :user
 
